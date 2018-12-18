@@ -1,0 +1,33 @@
+private void fetchData() {
+        compositeDisposable.add(retrofitAPI.getUsers()  // the get method
+                .subscribeOn(Schedulers.io()) // get the date in back thread 
+                .observeOn(AndroidSchedulers.mainThread()) // display the data in main thread 
+                .subscribeWith(new DisposableObserver<AllUsers>() {  //listener 
+                    @Override
+                    public void onNext(AllUsers allUsers) {
+                        dispData(allUsers.getData());
+                        Log.e("Data", "onNext: " + allUsers.getData());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("Data", "onError: " + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                }));
+    }
+    
+    
+    
+    
+// note 
+
+1- you can add .map ( to compare )
+2- you can add .filter ( to filter data in background  :V ) 
+
+for more info read about (rxjava operators)
+https://www.androidhive.info/RxJava/rxjava-operators-introduction/
