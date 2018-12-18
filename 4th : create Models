@@ -1,0 +1,23 @@
+1 : get the JSON data from the api url 
+
+https://reqres.in/api/users 
+-----------------------------------------
+2 : copy the hole JSON 
+
+-----------------------------------------
+3 : paste the JSON in this site to get the model class 
+
+http://www.jsonschema2pojo.org
+
+
+-Target language: JAVA 
+-Source type: JSON 
+-Annotation style: GSON 
+-Include getters and setters
+-preview 
+-ZIP : to download the model
+
+-----------------------------------------
+4 : copy the model class to your project 
+
+ 
