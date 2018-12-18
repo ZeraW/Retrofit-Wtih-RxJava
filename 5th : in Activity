@@ -1,0 +1,34 @@
+1 : define these 
+--------------------------
+RetrofitAPI retrofitAPI;
+CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+----------------------------------------------------------------------------------------------------------
+1 : at onCreate
+--------------------------
+
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //Inti Api
+        retrofitAPI = RetrofitClient.getClient(getApplicationContext()).create(RetrofitAPI.class);
+        
+        //get data 
+        fetchData();
+        
+        //to post data
+        postData();
+    }
+    
+
+----------------------------------------------------------------------------------------------------------
+2 : at onStop 
+--------------------------
+ @Override
+    protected void onStop() {
+        //to relase all the connections after activity cycle ends
+        compositeDisposable.clear();
+        super.onStop();
+    }
