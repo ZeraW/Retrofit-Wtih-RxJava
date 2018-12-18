@@ -1,0 +1,17 @@
+public void post(){
+        disposable.add(apiService.addUsers("hima","Dev") // post method
+                .subscribeOn(Schedulers.io())  
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Users>() {
+                    @Override
+                    public void onSuccess(Users users) {
+                        Log.e("POST", "onSuccess: User : " +users.getName() + " Job : " + users.getName());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("POST", "onError: "+e.getMessage());
+                    }
+                })
+        );
+    }
